@@ -32,7 +32,7 @@ public class PlayerController {
 	}
 	
 	@PostMapping("/players")
-	public Player createPlayer(@RequestBody Player player) {
+	public Player createPlayer(@Valid @RequestBody Player player) {
 		return playerRepository.save(player);
 	}
 	
