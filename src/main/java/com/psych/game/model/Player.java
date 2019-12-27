@@ -11,8 +11,16 @@ import lombok.Setter;
 @Table(name="players")
 public class Player extends Auditable{
 	
-	@Getter @Setter
 	@NotBlank
-	private String name;	
+	private String name;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 
 }
