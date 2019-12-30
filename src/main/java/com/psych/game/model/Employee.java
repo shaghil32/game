@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -11,9 +12,8 @@ import javax.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
-@Table(name="employees")
-public class Employee extends Auditable{
+@MappedSuperclass
+public abstract class Employee extends Auditable{
 	@Getter @Setter
 	@NotBlank
 	private String name;
@@ -22,5 +22,13 @@ public class Employee extends Auditable{
 	@NotBlank
 	@Email
 	private String email;
+
+	@Getter @Setter
+	@NotBlank
+	private String address;
+	
+	@Getter @Setter
+	@NotBlank
+	private String phoneNumber;
 
 }
