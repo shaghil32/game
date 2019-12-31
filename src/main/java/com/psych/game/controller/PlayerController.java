@@ -21,24 +21,26 @@ import com.psych.game.repository.PlayerRepository;
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/dev")
 public class PlayerController {
 	@Autowired
 	private PlayerRepository playerRepository;
 	
-//	@GetMapping("/players")
-//	public List<Player> getPlayers(){
-//		return playerRepository.findAll();
-//	}
+	
+	@GetMapping("/players")
+	public List<Player> getAllPlayers(){
+		return playerRepository.findAll();
+	}
+
+	@GetMapping("/players/{id}")
+	public Player getPlayerById(@PathVariable(value="id") Long id) throws Exception	{
+		return playerRepository.findById(id).orElseThrow(()-> new Exception("something went wrong"));
+	}
+}
 //	
 //	@PostMapping("/players")
 //	public Player createPlayer(@Valid @RequestBody Player player) {
 //		return playerRepository.save(player);
-//	}
-//	
-//	@GetMapping("/players/{id}")
-//	public Player getPlayerById(@PathVariable(value="id") Long id) throws Exception	{
-//		return playerRepository.findById(id).orElseThrow(()-> new Exception("something went wrong"));
 //	}
 //	
 //	@PutMapping("/players/{id}")
@@ -55,7 +57,3 @@ public class PlayerController {
 //		return ResponseEntity.ok().build();
 //		
 //	}
-	
-	
-	
-}

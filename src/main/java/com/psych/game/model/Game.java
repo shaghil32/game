@@ -20,6 +20,7 @@ public class Game extends Auditable{
 	@Getter @Setter @NotNull
 	private int numRounds=0;
 	
+	@Getter @Setter @NotNull
 	private int currentRounds=0;
 	
 	@Getter @Setter @ManyToMany
